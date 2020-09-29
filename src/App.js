@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route,Redirect,HashRouter } from 'react-router-dom';
+import {withRouter, BrowserRouter as Router, Switch, Route,Redirect,HashRouter } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import UserLayout from './User/UserLayout/UserLayout' 
@@ -8,7 +8,7 @@ import AdminLayoutRouter from './Admin/AdminLayout/AdminLayoutRouter'
 function App() {
   localStorage.setItem('admin',true)
   return (
-    <Router history={HashRouter}>
+    <Router>
             <div>
               <Switch>
                     <Route path='/'>

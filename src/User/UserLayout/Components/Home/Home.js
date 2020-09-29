@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Fashion from '../Fashion/Fashion'
+import BlogBoard from '../BlogBoard/BlogBoard';
+import CreateBlogsButton from '../BlogBoard/CreateBlogsButton';
+import CreatePollsButton from '../Polls/CreatePollsButton';
+import Bloggers from '../TopBloggers/Bloggers';
 
 export default class Home extends React.Component{
     
@@ -66,9 +70,48 @@ export default class Home extends React.Component{
 
         },
         
+    ];
+    blogsArray = [
+       {
+        ImageSrc:'images/man.jpg',
+        blog_title:'Nischitha',
+        description_blogs:'',
+        updated_datetime:'',
+       },
+       {
+        ImageSrc:'images/man.jpg',
+        blog_title:'Shrishail',
+        description_blogs:'',
+        updated_datetime:'',
+       },
+       {
+        ImageSrc:'images/man.jpg',
+        blog_title:'Yogi',
+        description_blogs:'',
+        updated_datetime:'',
+       },
+       {
+        ImageSrc:'images/man.jpg',
+        blog_title:'Ravi',
+        description_blogs:'',
+        updated_datetime:'',
+       },
+    ]
+      BloggerArray = [{
+          ImageSrc:'images/man.jpg',
+          bloggers_title:'shree',
+          number_of_blogs:'6000'
+      },
+      {
+        ImageSrc:'images/man.jpg',
+        bloggers_title:'yogi',
+        number_of_blogs:'20'
+    }
+    
     ]
      fashionList = this.fashion.map(list=> <Fashion fashion={list} />)
-
+     blogsList = this.blogsArray.map(blogs=><BlogBoard blogs={blogs} />)
+     BloggersList = this.BloggerArray.map(blogs=><Bloggers blogs={blogs} />)
 
     render() {
         return (
@@ -112,7 +155,7 @@ export default class Home extends React.Component{
             <div className="rounded bg-white board">
               <div className="media idea_media border-bottom p-2">
                 <div className="d-flex mr-1">
-                  <Link><img className="img-fluid rounded-circle" src="images/4.jpg" alt="User" /></Link>
+                  <Link href><img className="img-fluid rounded-circle" src="images/4.jpg" alt="User" /></Link>
                 </div>
                 <div className="media-body d-flex justify-content-between">
                   <span><small><span className="m-0 on_name"><b>Vaibhav Sharma Bought <Link href>Casual Shirt</Link></b></span></small><br />
@@ -172,51 +215,8 @@ export default class Home extends React.Component{
               <div className="col-lg-12 pl-2 pt-2">
                 <h6>Top Bloggers</h6>
               </div>
-              <div className="col-lg-6 p-2">
-                <div className="blog bg-white rounded text-center">
-                  <div className="blog_img">
-                    <img src="images/man.jpg" className="img-fluid rounded" />
-                  </div>
-                  <div className="blog_desc">
-                    <span><small><b>Vaibhav Sharma</b></small></span>
-                    <span><small>+420 Blogs</small></span>
-                  </div>
-                </div>	
-              </div>
-              <div className="col-lg-6 p-2">
-                <div className="blog bg-white rounded text-center">
-                  <div className="blog_img">
-                    <img src="images/man.jpg" className="img-fluid rounded" />
-                  </div>
-                  <div className="blog_desc">
-                    <span><small><b>Vaibhav Sharma</b></small></span>
-                    <span><small>+420 Blogs</small></span>
-                  </div>
-                </div>	
-              </div>
-              <div className="col-lg-6 p-2">
-                <div className="blog bg-white rounded text-center">
-                  <div className="blog_img">
-                    <img src="images/man.jpg" className="img-fluid rounded" />
-                  </div>
-                  <div className="blog_desc">
-                    <span><small><b>Vaibhav Sharma</b></small></span>
-                    <span><small>+420 Blogs</small></span>
-                  </div>
-                </div>	
-              </div>
-              <div className="col-lg-6 p-2">
-                <div className="blog bg-white rounded text-center">
-                  <div className="blog_img">
-                    <img src="images/man.jpg" className="img-fluid rounded" />
-                  </div>
-                  <div className="blog_desc">
-                    <span><small><b>Vaibhav Sharma</b></small></span>
-                    <span><small>+420 Blogs</small></span>
-                  </div>
-                </div>	
-              </div>
-            </div>
+              {this.BloggersList}
+             </div>
             <div className="row">
               <div className="col-lg-12 pl-2 pt-2">
                 <h6>Top Activitist</h6>
@@ -320,7 +320,7 @@ export default class Home extends React.Component{
                   <button className="btn btn-default bg-warning text-white mr-3 px-4" type="button">Submit</button>
                 </div>
                 <div className="col d-flex justify-content-end align-items-center">
-                  <small>Want to create a poll like this? </small> &nbsp;<button className="btn btn-default bg-warning text-white px-4" type="button">Create Poll</button>
+                  <small>Want to create a poll like this? </small> &nbsp;<CreatePollsButton />
                 </div>
               </div>
             </div>
@@ -339,174 +339,10 @@ export default class Home extends React.Component{
                 </div>	
               </div>
               <div className="row blog_board">
-                <div className="col-lg-12 p-1">
-                  <div className="post-slide9">
-                    <div className="blog-img">
-                      <img src="images/man.jpg" alt="true" className="img-fluid" />
-                    </div>
-                    <div className="post-review">
-                      <ul className="d-flex justify-content-between no-bullets">
-                        <li>
-                          Food For better health
-                        </li>
-                        <li>
-                          <div className="tooltip"><i className="fa fa-share-alt" aria-hidden="true" />
-                            <ul className="tooltiptext d-flex justify-content-around no-bullets">
-                              <li><Link  className="linkedin"><i className="fa fa-linkedin" aria-hidden="true" /></Link></li>
-                              <li><Link  className="facebook"><i className="fa fa-facebook-square" aria-hidden="true" /></Link></li>
-                              <li><Link  className="instagram"><i className="fa fa-instagram" aria-hidden="true" /></Link></li>
-                              <li><Link  className="google_plus"><i className="fa fa-google-plus" aria-hidden="true" /></Link></li>
-                            </ul>
-                          </div>
-                        </li>
-                      </ul>
-                      <div className="media_blog idea_media pb-1">
-                        <div className="d-flex mr-1">
-                          <Link href><img className="img-fluid rounded-circle" src="images/4.jpg" alt="User" /></Link>
-                        </div>
-                        <div className="media-body">
-                          <small><span className="m-0 on_name">Benjamin Robinson</span></small><br />
-                          <small><span className="on_date">14 Aug 2020, 09:00 PM</span></small>
-                        </div>
-                      </div>{/*/ media */}
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-12 p-1">
-                  <div className="post-slide9">
-                    <div className="blog-img">
-                      <img src="images/man.jpg" alt className="img-fluid" />
-                    </div>
-                    <div className="post-review">
-                      <ul className="d-flex justify-content-between no-bullets">
-                        <li>
-                          Food For better health
-                        </li>
-                        <li>
-                          <div className="tooltip"><i className="fa fa-share-alt" aria-hidden="true" />
-                            <ul className="tooltiptext d-flex justify-content-around no-bullets">
-                              <li><Link href className="linkedin"><i className="fa fa-linkedin" aria-hidden="true" /></Link></li>
-                              <li><Link href className="facebook"><i className="fa fa-facebook-square" aria-hidden="true" /></Link></li>
-                              <li><Link href className="instagram"><i className="fa fa-instagram" aria-hidden="true" /></Link></li>
-                              <li><Link href className="google_plus"><i className="fa fa-google-plus" aria-hidden="true" /></Link></li>
-                            </ul>
-                          </div>
-                        </li>
-                      </ul>
-                      <div className="media_blog idea_media pb-1">
-                        <div className="d-flex mr-1">
-                          <Link href><img className="img-fluid rounded-circle" src="images/4.jpg" alt="User" /></Link>
-                        </div>
-                        <div className="media-body">
-                          <small><span className="m-0 on_name">Benjamin Robinson</span></small><br />
-                          <small><span className="on_date">14 Aug 2020, 09:00 PM</span></small>
-                        </div>
-                      </div>{/*/ media */}
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-12 p-1">
-                  <div className="post-slide9">
-                    <div className="blog-img">
-                      <img src="images/man.jpg" alt className="img-fluid" />
-                    </div>
-                    <div className="post-review">
-                      <ul className="d-flex justify-content-between no-bullets">
-                        <li>
-                          Food For better health
-                        </li>
-                        <li>
-                          <div className="tooltip"><i className="fa fa-share-alt" aria-hidden="true" />
-                            <ul className="tooltiptext d-flex justify-content-around no-bullets">
-                              <li><Link href className="linkedin"><i className="fa fa-linkedin" aria-hidden="true" /></Link></li>
-                              <li><Link href className="facebook"><i className="fa fa-facebook-square" aria-hidden="true" /></Link></li>
-                              <li><Link href className="instagram"><i className="fa fa-instagram" aria-hidden="true" /></Link></li>
-                              <li><Link href className="google_plus"><i className="fa fa-google-plus" aria-hidden="true" /></Link></li>
-                            </ul>
-                          </div>
-                        </li>
-                      </ul>
-                      <div className="media_blog idea_media pb-1">
-                        <div className="d-flex mr-1">
-                          <Link href><img className="img-fluid rounded-circle" src="images/4.jpg" alt="User" /></Link>
-                        </div>
-                        <div className="media-body">
-                          <small><span className="m-0 on_name">Benjamin Robinson</span></small><br />
-                          <small><span className="on_date">14 Aug 2020, 09:00 PM</span></small>
-                        </div>
-                      </div>{/*/ media */}
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-12 p-1">
-                  <div className="post-slide9">
-                    <div className="blog-img">
-                      <img src="images/man.jpg" alt className="img-fluid" />
-                    </div>
-                    <div className="post-review">
-                      <ul className="d-flex justify-content-between no-bullets">
-                        <li>
-                          Food For better health
-                        </li>
-                        <li>
-                          <div className="tooltip"><i className="fa fa-share-alt" aria-hidden="true" />
-                            <ul className="tooltiptext d-flex justify-content-around no-bullets">
-                              <li><Link href className="linkedin"><i className="fa fa-linkedin" aria-hidden="true" /></Link></li>
-                              <li><Link href className="facebook"><i className="fa fa-facebook-square" aria-hidden="true" /></Link></li>
-                              <li><Link href className="instagram"><i className="fa fa-instagram" aria-hidden="true" /></Link></li>
-                              <li><Link href className="google_plus"><i className="fa fa-google-plus" aria-hidden="true" /></Link></li>
-                            </ul>
-                          </div>
-                        </li>
-                      </ul>
-                      <div className="media_blog idea_media pb-1">
-                        <div className="d-flex mr-1">
-                          <Link href><img className="img-fluid rounded-circle" src="images/4.jpg" alt="User" /></Link>
-                        </div>
-                        <div className="media-body">
-                          <small><span className="m-0 on_name">Benjamin Robinson</span></small><br />
-                          <small><span className="on_date">14 Aug 2020, 09:00 PM</span></small>
-                        </div>
-                      </div>{/*/ media */}
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-12 p-1">
-                  <div className="post-slide9">
-                    <div className="blog-img">
-                      <img src="images/man.jpg" alt className="img-fluid" />
-                    </div>
-                    <div className="post-review">
-                      <ul className="d-flex justify-content-between no-bullets">
-                        <li>
-                          Food For better health
-                        </li>
-                        <li>
-                          <div className="tooltip"><i className="fa fa-share-alt" aria-hidden="true" />
-                            <ul className="tooltiptext d-flex justify-content-around no-bullets">
-                              <li><Link href className="linkedin"><i className="fa fa-linkedin" aria-hidden="true" /></Link></li>
-                              <li><Link href className="facebook"><i className="fa fa-facebook-square" aria-hidden="true" /></Link></li>
-                              <li><Link href className="instagram"><i className="fa fa-instagram" aria-hidden="true" /></Link></li>
-                              <li><Link href className="google_plus"><i className="fa fa-google-plus" aria-hidden="true" /></Link></li>
-                            </ul>
-                          </div>
-                        </li>
-                      </ul>
-                      <div className="media_blog idea_media pb-1">
-                        <div className="d-flex mr-1">
-                          <Link href><img className="img-fluid rounded-circle" src="images/4.jpg" alt="User" /></Link>
-                        </div>
-                        <div className="media-body">
-                          <small><span className="m-0 on_name">Benjamin Robinson</span></small><br />
-                          <small><span className="on_date">14 Aug 2020, 09:00 PM</span></small>
-                        </div>
-                      </div>{/*/ media */}
-                    </div>
-                  </div>
-                </div>
+              {this.blogsList}
               </div>
               <div className="row">
-                <button className="btn btn-default bg-warning text-white text-center rounded-bottom" type="button" style={{width: '100%', borderRadius: 0}}>Create Blog</button>
+                <CreateBlogsButton />
               </div>
             </div>
           </div>

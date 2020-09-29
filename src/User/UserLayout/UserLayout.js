@@ -1,16 +1,29 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {withRouter, Switch } from 'react-router-dom';
 import Header from './header/header';
 import UserLayoutRouter from './UserLayoutRouter'
 import Home from './Components/Home/Home'
 import Footer from './Components/footer/footer'
-export default class UserLayout extends Component {
+import ProductDetails from './Components/Fashion/ProductDetails/ProductDetails'
+import Login from './Components/Authentication/Login/Login'
+import Register from './Components/Authentication/Register/Register';
+import CartProcess from './Components/Cart/CartProcess';
+import CreateBlogs from './Components/BlogBoard/CreateBlogs';
+import CreatePolls from './Components/Polls/CreatePolls';
+ class UserLayout extends Component {
     render() {
         return (
             <div>
               <Header />
               <Switch>
-              <UserLayoutRouter restricted={false} path='/' component={Home}></UserLayoutRouter>
+              <UserLayoutRouter exact restricted={false} path='/' component={Home}></UserLayoutRouter>
+              <UserLayoutRouter restricted={false} path='/login' component={Login}></UserLayoutRouter>
+              <UserLayoutRouter restricted={false} path='/register' component={Register}></UserLayoutRouter>
+              <UserLayoutRouter restricted={false} path='/cartProcess' component={CartProcess}></UserLayoutRouter>
+              <UserLayoutRouter restricted={false} path='/createBlogs' component={CreateBlogs}></UserLayoutRouter>
+              <UserLayoutRouter exact restricted={false} path='/productDetails' component={ProductDetails}></UserLayoutRouter>
+              <UserLayoutRouter restricted={false} path='/createPolls' component={CreatePolls}></UserLayoutRouter>
+
               </Switch>
               <Footer />
             </div>
@@ -18,3 +31,5 @@ export default class UserLayout extends Component {
         );
     }
 }
+
+export default withRouter(UserLayout);

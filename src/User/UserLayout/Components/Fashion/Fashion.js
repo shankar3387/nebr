@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+
 export class Fashion extends Component {
         constructor(props) {
             super(props);
             console.log(this.props)
-
+         this.clickHandler = this.clickHandler.bind(this)
         }
         ImageSrc = this.props.fashion.ImageSrc;
         title = this.props.fashion.title
@@ -13,9 +14,15 @@ export class Fashion extends Component {
         offers = this.props.fashion.offers
         price = this.props.fashion.price
      price = this.props.fashion.price
+
+     clickHandler = (e) =>{
+        console.log(e)
+        console.log(this)
+        this.props.history.push('/productDetails')
+     }
     render() {
         return (
-            <div className="col-lg-2">	
+            <div className="col-lg-2" onClick= {this.clickHandler}>	
             <div className="post-slide9">
               <div className="post-img">
                 <img src={this.ImageSrc} alt='Test' className="img-fluid" />
@@ -62,4 +69,4 @@ export class Fashion extends Component {
     }
 }
 
-export default Fashion
+export default withRouter(Fashion)
