@@ -5,6 +5,7 @@ import BlogBoard from '../BlogBoard/BlogBoard';
 import CreateBlogsButton from '../BlogBoard/CreateBlogsButton';
 import CreatePollsButton from '../Polls/CreatePollsButton';
 import Bloggers from '../TopBloggers/Bloggers';
+import Activitist from '../TopActivitist/Activitist';
 
 export default class Home extends React.Component{
     
@@ -96,7 +97,7 @@ export default class Home extends React.Component{
         description_blogs:'',
         updated_datetime:'',
        },
-    ]
+    ];
       BloggerArray = [{
           ImageSrc:'images/man.jpg',
           bloggers_title:'shree',
@@ -106,12 +107,27 @@ export default class Home extends React.Component{
         ImageSrc:'images/man.jpg',
         bloggers_title:'yogi',
         number_of_blogs:'20'
-    }
-    
+    },
+    ];
+    ActivitistArray = [
+      {
+          ImageSrc:'images/man.jpg',
+          activitis_title:'shree',
+          number_of_activitis:'46000'
+      },
+      {
+        ImageSrc:'images/man.jpg',
+        activitis_title:'yogi',
+        number_of_activitis:'2043'
+       }
     ]
+
+
+
      fashionList = this.fashion.map(list=> <Fashion fashion={list} />)
      blogsList = this.blogsArray.map(blogs=><BlogBoard blogs={blogs} />)
      BloggersList = this.BloggerArray.map(blogs=><Bloggers blogs={blogs} />)
+     ActivitistList = this.ActivitistArray.map(blogs=><Activitist blogs={blogs} />)
 
     render() {
         return (
@@ -221,50 +237,9 @@ export default class Home extends React.Component{
               <div className="col-lg-12 pl-2 pt-2">
                 <h6>Top Activitist</h6>
               </div>
-              <div className="col-lg-6 p-2">
-                <div className="blog bg-white rounded text-center">
-                  <div className="blog_img">
-                    <img src="images/man.jpg" className="img-fluid rounded" />
-                  </div>
-                  <div className="blog_desc">
-                    <span><small><b>Vaibhav Sharma</b></small></span>
-                    <span><small>+420 Blogs</small></span>
-                  </div>
-                </div>	
-              </div>
-              <div className="col-lg-6 p-2">
-                <div className="blog bg-white rounded text-center">
-                  <div className="blog_img">
-                    <img src="images/man.jpg" className="img-fluid rounded" />
-                  </div>
-                  <div className="blog_desc">
-                    <span><small><b>Vaibhav Sharma</b></small></span>
-                    <span><small>+420 Blogs</small></span>
-                  </div>
-                </div>	
-              </div>
-              <div className="col-lg-6 p-2">
-                <div className="blog bg-white rounded text-center">
-                  <div className="blog_img">
-                    <img src="images/man.jpg" alt="true" className="img-fluid rounded" />
-                  </div>
-                  <div className="blog_desc">
-                    <span><small><b>Vaibhav Sharma</b></small></span>
-                    <span><small>+420 Blogs</small></span>
-                  </div>
-                </div>	
-              </div>
-              <div className="col-lg-6 p-2">
-                <div className="blog bg-white rounded text-center">
-                  <div className="blog_img">
-                    <img src="images/man.jpg" alt="true" className="img-fluid rounded" />
-                  </div>
-                  <div className="blog_desc">
-                    <span><small><b>Vaibhav Sharma</b></small></span>
-                    <span><small>+420 Blogs</small></span>
-                  </div>
-                </div>	
-              </div>
+              {this.ActivitistList}
+              
+         
             </div>
           </div>
         </div>
